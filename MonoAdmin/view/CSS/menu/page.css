@@ -1,7 +1,10 @@
 .page {
     width: 100%;
     box-sizing: border-box;
-    padding: 50px;
+    padding: 25px;
+}
+.page > div {
+    margin: 25px;
 }
 .page_title {
     line-height: 50px;
@@ -13,7 +16,10 @@
     font-size: 28px;
     font-weight: 300;
     display: inline-block;
-    background-color: #fff;
-    box-shadow: 0px 0px 20px 10px #e8e8e8;
+}
+.page_block_radius {
     border-radius: 10px;
+}
+.page_block_shadow {
+    box-shadow: 0px 0px 20px 10px #e8e8e8;
 }

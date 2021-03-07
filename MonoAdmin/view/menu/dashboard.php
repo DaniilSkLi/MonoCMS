@@ -1,3 +1,3 @@
 <div class="page">
-    <div class="page_title">Dashboard</div>
+    <div class="page_title"><?php ThePageTitle(); ?></div>
 </div>

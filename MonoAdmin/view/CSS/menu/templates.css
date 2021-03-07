@@ -1,0 +1,13 @@
+.templates {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0px !important;
+}
+.templates > div {
+    margin: 25px;
+}
+.templates .card {
+    position: relative;
+}
