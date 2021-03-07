@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body > div {
+    float: left;
+}
+
+.menu {
+    width: 50px;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.menu .item {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+    transition: 0.5s all;
+    
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #373737;
+    position: relative;
+}
+.menu * {
+    float: left;
+}
+.menu .item img {
+    margin: 2.5px;
+    width: 35px;
+    max-height: 35px;
+    display: inline-block;
+}
+.menu .item span {
+    width: calc(100% - 40px);
+    padding-left: 10px;
+    padding-right: 5px;
+    line-height: 40px;
+    text-align: center;
+    transform: translateX(-20px);
+    overflow: hidden;
+    transition: 0.5s all;
+    opacity: 0;
+    white-space: nowrap;
+}
+.menu .item:hover {
+    width: 200px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transition-delay: 0.3s;
+    z-index: 99999;
+}
+.menu .item:hover span {
+    transform: translateX(0px);
+    transition-delay: 0.5s;
+    opacity: 1;
+}
