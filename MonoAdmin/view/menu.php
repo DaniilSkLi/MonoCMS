@@ -25,6 +25,7 @@ else {
         <?php GetHead(); ?>
         <?php MONO_include_css_array([
             GetURI() . "view/CSS/menu.css",
+            GetURI() . "view/CSS/menu/page.css",
             GetURI() . "view/CSS/menu/".$page.".css"
         ]); ?>
 

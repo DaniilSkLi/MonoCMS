@@ -1,3 +1,3 @@
 <div class="page">
-    sdas
+    <div class="page_title">Dashboard</div>
 </div>

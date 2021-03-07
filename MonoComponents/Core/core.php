@@ -9,3 +9,4 @@ require_once __DIR__ . "/menu.php";
 
 require_once __DIR__ . "/include_js.php";
 require_once __DIR__ . "/include_css.php";
+require_once __DIR__ . "/include_font.php";
