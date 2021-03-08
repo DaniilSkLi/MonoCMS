@@ -37,7 +37,7 @@ function GetTemplates() {
                 "ThemeActive" => false
             );
 
-            $active = GetActiveTheme();
+            $active = GetActiveThemePath();
             if (MONO_isset($theme["ThemePath"]) == $active) {
                 $theme["ThemeActive"] = true;
             }
@@ -48,7 +48,7 @@ function GetTemplates() {
     return $templates;
 }
 
-function GetActiveTheme() {
+function GetActiveThemePath() {
     global $MONO_CONNECT, $MONO_HOST;
     $table = $MONO_HOST["table_prefix"]."settings";
     $sql = "SELECT * FROM `$table` WHERE `name` = 'active_theme'";
@@ -63,7 +63,7 @@ function GetActiveTheme() {
         
         $sql = "INSERT INTO `$table` (`name`, `value`) VALUES ('active_theme', '$theme')";
         $MONO_CONNECT->query($sql);
-        GetActiveTheme();
+        GetActiveThemePath();
     }
     else { 
         return $result["value"];

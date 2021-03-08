@@ -1,4 +1,5 @@
 <?php
+$index = true;
 
 require_once __DIR__ . "/Mono-root.php";
 

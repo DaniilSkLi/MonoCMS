@@ -11,7 +11,7 @@
         <!-- Получение списка тем -->
         <?php
             $templates = GetTemplates();
-            $active = GetActiveTheme();
+            
             foreach ($templates as $theme) {
         ?>
                 <div class="card page_block_radius page_block_shadow" style="width: 18rem;">

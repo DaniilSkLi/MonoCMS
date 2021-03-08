@@ -3,7 +3,7 @@ window.onload = function() {
         el: "#vue",
         methods: {
             activate: function(path) {
-                axios.post('ajax/changeTemplate.php', {
+                axios.post('ajax/togglePlugins.php', {
                     path: path,
                 }).then(function (answer) {
                     if (answer.data == "") {
@@ -14,9 +14,9 @@ window.onload = function() {
                     }
                 });
             },
-            addTheme: function() {
+            addPlugin: function() {
                 console.log("asd");
-                alert("Unpack your theme and put theme folder to \"SiteName/MonoContent/templates/[put here]\"");
+                alert("Unpack your plugin and put plugin folder to \"SiteName/MonoContent/plugins/[put here]\"");
             }
         }
     });

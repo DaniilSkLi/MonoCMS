@@ -1,15 +1,26 @@
+# My Error pages
+ErrorDocument 404 /MonoCMS/errors.php?e=404
+ErrorDocument 403 /MonoCMS/errors.php?e=403
+
 
 # BEGIN WordPress
 # Директивы (строки) между `BEGIN WordPress` и `END WordPress`
 # созданы автоматически и подлежат изменению только через фильтры WordPress.
 # Сделанные вручную изменения между этими маркерами будут перезаписаны.
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /MonoCMS/
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /MonoCMS/index.php [L]
-</IfModule>
+
+#RewriteEngine On
+#RewriteBase /MonoCMS/
+
+#RewriteCond %{REQUEST_URI} ^/404/$
+#RewriteRule ^(.*)$ /pages/errors/404.php [L]
+
+#RewriteCond %{REQUEST_URI} ^/500/$
+#RewriteRule ^(.*)$ /pages/errors/500.php [L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+#RewriteRule ^index\.php$ - [L]
+#RewriteRule . /MonoCMS/index.php [L]
 
 # END WordPress

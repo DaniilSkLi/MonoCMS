@@ -1,0 +1,13 @@
+.plugins {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0px !important;
+}
+.plugins > div {
+    margin: 25px;
+}
+.plugins .card {
+    position: relative;
+}
