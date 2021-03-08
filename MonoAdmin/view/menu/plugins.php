@@ -28,8 +28,11 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" type="button" class="btn btn-primary page_block_radius activate" <?php if ($plugin["PluginActive"]) { echo "disabled"; } ?>>Activate</button>
-                        <button v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" type="button" class="btn btn-secondary page_block_radius activate" <?php if (!$plugin["PluginActive"]) { echo "disabled"; } ?>>Deactivate</button>
+                        <div class="form-check form-switch">
+                            <input v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" class="form-check-input float-end" type="checkbox" id="flexSwitchCheckDefault" <?php if ($plugin["PluginActive"]) { echo "checked"; } ?>>
+                        </div>
+                        <!-- <button v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" type="button" class="btn btn-primary page_block_radius activate" <?php if ($plugin["PluginActive"]) { echo "disabled"; } ?>>Activate</button>
+                        <button v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" type="button" class="btn btn-secondary page_block_radius activate" <?php if (!$plugin["PluginActive"]) { echo "disabled"; } ?>>Deactivate</button> -->
                     </div>
                 </div>
         <?php
