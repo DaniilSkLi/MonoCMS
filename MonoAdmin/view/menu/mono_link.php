@@ -1,4 +1,4 @@
 <?php
 
-header("Location: https://github.com/DaniilSkLi/MonoCMS");
+Redirect("https://github.com/DaniilSkLi/MonoCMS");
 exit("Redirecting...");

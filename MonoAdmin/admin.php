@@ -10,6 +10,5 @@ if ($index)
     }
 }
 else {
-    Header("Location: index.php");
-    exit();
+    Redirect("index.php");
 }

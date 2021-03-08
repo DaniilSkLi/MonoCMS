@@ -14,14 +14,9 @@ if (AutorizationControl::Check()) {
         $MONO_CONNECT->query($sql);
     }
     else {
-        Kill();
+        KillErr(403);
     }
 }
 else {
-    Kill();
-}
-
-function Kill() {
-    http_response_code(403);
-    die();
+    KillErr(403);
 }

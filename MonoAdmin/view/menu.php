@@ -2,7 +2,7 @@
 
 if (!$index)
 {
-    Header("Location: ../index.php");
+    Redirect("../index.php");
     exit();
 }
 

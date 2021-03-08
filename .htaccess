@@ -1,4 +1,5 @@
 # My Error pages
+ErrorDocument 500 /MonoCMS/errors.php?e=500
 ErrorDocument 404 /MonoCMS/errors.php?e=404
 ErrorDocument 403 /MonoCMS/errors.php?e=403
 
