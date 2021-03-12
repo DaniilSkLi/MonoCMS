@@ -1,10 +1,10 @@
 <?php
 
-require_once dirname(dirname(__DIR__)) . "/Mono-root.php";
-require_once ROOT_PATH . "MonoComponents/Core/core.php";
+require_once "lib/check.php";
+require_once "lib/getAxiosData.php";
 
-if (AutorizationControl::Check()) {
-    $_POST = json_decode(file_get_contents('php://input'), true);
+Check(function(){
+    global $MONO_CONNECT, $MONO_HOST;
 
     if (isset($_POST["path"])) {
         $table = $MONO_HOST["table_prefix"] . "settings";
@@ -14,9 +14,6 @@ if (AutorizationControl::Check()) {
         $MONO_CONNECT->query($sql);
     }
     else {
-        KillErr(403);
+        return 403;
     }
-}
-else {
-    KillErr(403);
-}
+});

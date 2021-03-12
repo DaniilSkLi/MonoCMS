@@ -1,0 +1,22 @@
+.settings {
+    margin: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+}
+.settings > div {
+    margin: 25px;
+}
+.setting_block {
+    width: 100%;
+    padding: 20px;
+}
+.setting_block hr {
+    border: none;
+    background-color: #e8e8e8;
+}
+.setting_block .block_title {
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+}

@@ -58,10 +58,6 @@ function ThePageTitle() {
             GetURI() . "view/CSS/menu/page.css",
             GetURI() . "view/CSS/menu/".$page.".css"
         ]); ?>
-        <!-- Подключение js -->
-        <?php MONO_include_js_array([
-            GetURI() . "view/JS/menu/".$page.".js"
-        ]); ?>
 
         <title><?php ThePageTitle(); ?></title>
     </head>
@@ -94,4 +90,9 @@ function ThePageTitle() {
         <!-- Подключение самой страницы -->
         <?php require_once __DIR__ . "/menu/".$page.".php"; ?>
     </body>
+    
+    <!-- Подключение js -->
+    <?php MONO_include_js_array([
+        GetURI() . "view/JS/menu/".$page.".js"
+    ]); ?>
 </html>
