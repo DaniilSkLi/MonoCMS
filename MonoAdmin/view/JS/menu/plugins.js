@@ -1,14 +1,22 @@
-let templates = new Vue({
+let plugins = new Vue({
     el: "#vue",
+    data: {
+        plugins: {}
+    },
     methods: {
-        activate: function(path) {
-            axios.post('ajax/togglePlugins.php', {
-                path: path,
+        loadPlugins: function() {
+            axios.post('ajax/plugins.php', {
+                command: "get",
             }).then(function (answer) {
-                if (answer.data == "") {
-                    window.location.reload();
-                }
-                else {
+                Vue.set(plugins, "plugins", answer.data);
+            });
+        },
+        activate: function(path) {
+            axios.post('ajax/plugins.php', {
+                command: "toggle",
+                path: path
+            }).then(function (answer) {
+                if (!(answer.data === "")) {
                     alert("ERROR");
                 }
             });
@@ -19,3 +27,5 @@ let templates = new Vue({
         }
     }
 });
+
+plugins.loadPlugins();

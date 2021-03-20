@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($index)) {
-    Redirect("./");
+    MONO_Redirect("./");
 }
 
 

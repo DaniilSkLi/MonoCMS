@@ -1,5 +1,5 @@
 <?php
 
-function Redirect($url) {
+function MONO_Redirect($url) {
     exit(header("Location: " . $url));
 }

@@ -26,7 +26,7 @@ function GetPlugins() {
     foreach ($dirs as $item) {
         $item_dir = scandir($dir . "/" . $item);
         if (in_array("info.ini", $item_dir) && in_array("index.php", $item_dir)) {
-            $ini = parse_ini_file($dir . "/" . $item . "/info.ini");
+            $ini = MONO_GetIni($dir . "/" . $item . "/info.ini");
             
             $plugin = array(
                 "PluginName" => MONO_isset($ini["PluginName"]),

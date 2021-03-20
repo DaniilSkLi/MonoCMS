@@ -2,7 +2,7 @@
 
 if (!$index)
 {
-    Redirect("../index.php");
+    MONO_Redirect("../index.php");
     exit();
 }
 
@@ -29,7 +29,7 @@ function TitleCheck($name, $file_name) {
 function GetPageTitle() {
     global $page;
 
-    $pageInfo = AdminMenu::GetItemByFile($page);
+    $pageInfo = MONO_AdminMenu::GetItemByFile($page);
     return TitleCheck($pageInfo["name"], $page);
 }
 
@@ -74,7 +74,7 @@ function ThePageTitle() {
             <!-- PHP код для вывода меню -->
             <?php
             
-            $menu = AdminMenu::GetMenu();
+            $menu = MONO_AdminMenu::GetMenu();
 
             foreach ($menu as $item) {
                 // Пробует получить заголовок вместо имени из БД (для перевода).

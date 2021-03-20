@@ -9,31 +9,24 @@
     <!-- Вывод всех установленых тем -->
     <div class="templates">
         <!-- Получение списка тем -->
-        <?php
-            $templates = GetTemplates();
-            
-            foreach ($templates as $theme) {
-        ?>
-                <div class="card page_block_radius page_block_shadow" style="width: 18rem;">
-                    <img src="<?php echo $theme["ThemePath"] . "screenshot.png" ?>" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <?php if ($theme["ThemeActive"]) { ?>
-                            <span class="badge rounded-pill bg-success">Active</span>
-                        <?php } ?>
-                        <h5 class="card-title"><?php echo $theme["ThemeName"]; ?></h5>
-                        <p class="card-text"><?php echo $theme["ThemeDescription"]; ?></p>
-                        <div>
-                            <small><span class="text-muted"><?php echo "Author: " . $theme["ThemeAuthor"]; ?></span></small></br>
-                            <small><span class="text-muted"><?php echo "Version: " . $theme["ThemeVersion"]; ?></span></small>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button v-on:click="activate('<?php echo $theme["ThemePath"]; ?>')" type="button" class="btn btn-primary page_block_radius activate" <?php if ($theme["ThemeActive"]) { echo "disabled"; } ?>>Activate</button>
-                    </div>
+
+        <div class="card page_block_radius page_block_shadow" style="width: 18rem;" v-for="(theme, index) in templates">
+            <img v-bind:src="theme.ThemePath" class="card-img-top" alt="">
+            <div class="card-body">
+                <span v-if="theme.ThemeActive">
+                    <span class="badge rounded-pill bg-success">Active</span>
+                </span>
+                <h5 class="card-title">{{ theme.ThemeName }}</h5>
+                <p class="card-text">{{ theme.ThemeDescription }}</p>
+                <div>
+                    <small><span class="text-muted">Author: {{ theme.ThemeAuthor }}</span></small></br>
+                    <small><span class="text-muted">Version: {{ theme.ThemeVersion }}</span></small>
                 </div>
-        <?php
-            }
-        ?>
+            </div>
+            <div class="card-footer">
+                <button v-on:click="activate(index, theme.ThemePath)" type="button" class="btn btn-primary page_block_radius activate" v-bind:disabled="theme.ThemeActive ? true : false">Activate</button>
+            </div>
+        </div>
     </div>
     <!-- Установка темы -->
     <div class="add_template"><button v-on:click="addTheme" type="button" class="btn btn-primary page_block_radius page_block_shadow">Add template</button></div>

@@ -6,38 +6,30 @@
     <!-- Заголовок -->
     <div class="page_title page_block_radius page_block_shadow"><?php ThePageTitle(); ?></div>
 
-    <!-- Вывод всех установленых тем -->
+    <!-- Вывод всех установленых плагинов5 -->
     <div class="plugins">
-        <!-- Получение списка тем -->
-        <?php
-            $plugins = GetPlugins();
+        <!-- Получение списка плагинов -->
 
-            foreach ($plugins as $plugin) {
-        ?>
-                <div class="card page_block_radius page_block_shadow" style="width: 18rem;">
-                    <img src="<?php echo $plugin["PluginPath"] . "screenshot.png" ?>" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <?php if ($plugin["PluginActive"]) { ?>
-                            <span class="badge rounded-pill bg-success">Active</span>
-                        <?php } ?>
-                        <h5 class="card-title"><?php echo $plugin["PluginName"]; ?></h5>
-                        <p class="card-text"><?php echo $plugin["PluginDescription"]; ?></p>
-                        <div>
-                            <small><span class="text-muted"><?php echo "Author: " . $plugin["PluginAuthor"]; ?></span></small></br>
-                            <small><span class="text-muted"><?php echo "Version: " . $plugin["PluginVersion"]; ?></span></small>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="form-check form-switch">
-                            <input v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" class="form-check-input float-end" type="checkbox" id="flexSwitchCheckDefault" <?php if ($plugin["PluginActive"]) { echo "checked"; } ?>>
-                        </div>
-                        <!-- <button v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" type="button" class="btn btn-primary page_block_radius activate" <?php if ($plugin["PluginActive"]) { echo "disabled"; } ?>>Activate</button>
-                        <button v-on:click="activate('<?php echo $plugin["PluginPath"]; ?>')" type="button" class="btn btn-secondary page_block_radius activate" <?php if (!$plugin["PluginActive"]) { echo "disabled"; } ?>>Deactivate</button> -->
-                    </div>
+        <div class="card page_block_radius page_block_shadow" style="width: 18rem;" v-for="(plugin, index) in plugins">
+            <img v-bind:src="plugin.PluginPath" class="card-img-top" alt="">
+            <div class="card-body">
+                <span v-if="plugin.PluginActive">
+                    <span class="badge rounded-pill bg-success">Active</span>
+                </span>
+                <h5 class="card-title">{{ plugin.PluginName }}</h5>
+                <p class="card-text">{{ plugin.PluginDescription }}</p>
+                <div>
+                    <small><span class="text-muted">Author: {{ plugin.PluginAuthor }}</span></small></br>
+                    <small><span class="text-muted">Version: {{ plugin.PluginVersion }}</span></small>
                 </div>
-        <?php
-            }
-        ?>
+            </div>
+            <div class="card-footer">
+                <div class="form-check form-switch">
+                    <input v-on:click="activate(plugin.PluginPath)" class="form-check-input float-end" type="checkbox" id="flexSwitchCheckDefault" v-model="plugins[index].PluginActive">
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- Установка темы -->
     <div class="add_template"><button v-on:click="addPlugin" type="button" class="btn btn-primary page_block_radius page_block_shadow">Add plugin</button></div>

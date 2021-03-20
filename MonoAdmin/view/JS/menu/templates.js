@@ -1,14 +1,28 @@
 let templates = new Vue({
     el: "#vue",
+    data: {
+        templates: {}
+    },
     methods: {
-        activate: function(path) {
-            axios.post('ajax/changeTemplate.php', {
-                path: path,
+        loadTemplates: function() {
+            axios.post('ajax/template.php', {
+                command: "get"
             }).then(function(answer) {
-                if (answer.data == "") {
-                    window.location.reload();
-                }
-                else {
+                Vue.set(templates, "templates", answer.data);
+                templates.sort();
+            });
+        },
+        activate: function(index, path) {
+            for (let i = 0; i < templates.templates.length; i++) {
+                templates.templates[i].ThemeActive = false;
+            }
+            templates.templates[index].ThemeActive = true;
+
+            axios.post('ajax/template.php', {
+                command: "toggle",
+                path: path
+            }).then(function(answer) {
+                if (!(answer.data === "")) {
                     alert("ERROR");
                 }
             });
@@ -16,6 +30,16 @@ let templates = new Vue({
         addTheme: function() {
             console.log("asd");
             alert("Unpack your theme and put theme folder to \"SiteName/MonoContent/templates/[put here]\"");
+        },
+        sort: function() {
+            templates.templates.sort(function(a, b) {
+                if (a.ThemeActive == false)
+                    return 1;
+                else
+                    return -1;
+            });
         }
     }
 });
+
+templates.loadTemplates();

@@ -6,7 +6,7 @@ require_once ROOT_PATH . "MonoComponents/Core/core.php";
 $FormData = json_decode(file_get_contents("php://input"));
 
 if (isset($FormData->login) && isset($FormData->password)) {
-    if (AutorizationControl::SignIn($FormData->login, $FormData->password)) {
+    if (MONO_AutorizationControl::SignIn($FormData->login, $FormData->password)) {
         echo "refresh";
     }
     else {

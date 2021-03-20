@@ -1,6 +1,6 @@
 <?php
 
-function Kill($error) {
+function MONO_kill($error) {
     http_response_code($error);
     die();
 }

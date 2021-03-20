@@ -1,4 +1,4 @@
 <?php
 
-Redirect("https://github.com/DaniilSkLi/MonoCMS");
+MONO_Redirect("https://github.com/DaniilSkLi/MonoCMS");
 exit("Redirecting...");

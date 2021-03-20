@@ -1,6 +1,6 @@
 <?php
 
-class AdminMenu {
+class MONO_AdminMenu {
     // Получить массив с элементами меню
     public static function GetMenu() {
         global $MONO_CONNECT, $MONO_HOST;
@@ -13,7 +13,7 @@ class AdminMenu {
 
     // Вывести меню
     public static function TheMenu() {
-        $menu = AdminMenu::GetMenu();
+        $menu = MONO_AdminMenu::GetMenu();
 
         foreach ($menu as $item) {
             echo "<div class='item'><img src='view/Icons/Menu/dashboard.svg' alt=''><span>".$item["name"]."</span></div>";

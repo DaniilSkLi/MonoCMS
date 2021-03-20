@@ -1,7 +1,7 @@
 <?php
 
 function GetFavicon() {
-    if (file_exists("Favicons/custom.ico")) {
+    if (file_exists("MonoComponents/Favicons/custom.ico")) {
         echo "<link rel='shortcut icon' href='".ROOT_URI."MonoComponents/Favicons/custom.ico' type='image/x-icon'/>";
     }
     else {

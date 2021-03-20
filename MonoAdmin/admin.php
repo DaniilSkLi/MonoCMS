@@ -2,7 +2,7 @@
 
 if ($index)
 {
-    if (AutorizationControl::Check()) {
+    if (MONO_AutorizationControl::Check()) {
         require_once __DIR__ . "/view/menu.php";
     }
     else {
@@ -10,5 +10,5 @@ if ($index)
     }
 }
 else {
-    Redirect("index.php");
+    MONO_Redirect("index.php");
 }
