@@ -8,10 +8,10 @@ function Check($func) {
     if (MONO_AutorizationControl::Check()) {
         $err = $func();
         if (isset($err)) {
-            KillErr($func());
+            KillErr($err);
         }
     }
     else {
-        KillErr($func());
+        KillErr(403);
     }
 }

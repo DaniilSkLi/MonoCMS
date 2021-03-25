@@ -51,17 +51,14 @@ function GetPlugins() {
 function GetActivePlugin() {
     global $MONO_CONNECT, $MONO_HOST;
     $table = $MONO_HOST["table_prefix"]."settings";
-    $sql = "SELECT * FROM `$table` WHERE `name` = 'active_plugins'";
     
-    $result = $MONO_CONNECT->query($sql);
-    $result = $result->fetch();
+    $result = MONO_Config::Get("active_plugins");
 
-    if (!is_array($result)) {        
-        $sql = "INSERT INTO `$table` (`name`, `value`) VALUES ('active_plugins', '".json_encode(array())."')";
-        $MONO_CONNECT->query($sql);
+    if ($result == NULL) {
+        MONO_Config::Set("active_plugins", json_encode(array()));
         GetActivePlugin();
     }
     else {
-        return json_decode($result["value"], true);
+        return json_decode($result, true);
     }
 }

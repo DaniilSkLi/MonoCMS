@@ -28,7 +28,7 @@ class MONO_Settings {
 
         foreach ($result as $category) {
             if (self::IsAdminPanelSettings($category["name"])) {
-                $categories[] = array("name" => str_replace(self::$prefix, "", $category["name"]), "settings" => json_decode($category["value"]));
+                $categories[$category["name"]] = array("name" => str_replace(self::$prefix, "", $category["name"]), "settings" => json_decode($category["value"], true));
             }
         }
 
@@ -95,7 +95,8 @@ class MONO_Settings {
         self::CategoryFix($category);
 
         $Settings = self::GetSettings($category);
-        $Settings[$setting] = $value;
+        // $Settings[$setting] = $value;
+        $Settings[$setting] = array("name" => $setting, "value" => $value);
 
         self::UpdateCategories($category, $Settings);
     }

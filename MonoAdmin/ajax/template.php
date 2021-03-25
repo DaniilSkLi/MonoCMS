@@ -10,12 +10,8 @@ Check(function(){
     $cmd = $_POST["command"];
 
     if ($cmd == "toggle") {
-        if (isset($_POST["path"])) {
-            $table = $MONO_HOST["table_prefix"] . "settings";
-            
-            $sql = "UPDATE `$table` SET `value`='".$_POST["path"]."' WHERE `name`='active_theme'";
-            
-            $MONO_CONNECT->query($sql);
+        if (isset($_POST["path"])) {            
+            MONO_Config::Set("active_theme", $_POST["path"]);
         }
         else {
             return 403;

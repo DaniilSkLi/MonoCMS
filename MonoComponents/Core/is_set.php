@@ -1,10 +1,10 @@
 <?php
 
-function MONO_isset($var) {
+function MONO_isset($var, $else = NULL) {
     if (isset($var)) {
         return $var;
     }
     else {
-        return NULL;
+        return $else;
     }
 }

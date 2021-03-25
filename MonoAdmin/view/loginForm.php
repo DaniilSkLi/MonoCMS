@@ -8,7 +8,7 @@
         <?php GetHead(); ?>
         <?php MONO_include_css(GetURI() . "view/CSS/loginForm.css"); ?>
         
-        <title><?php echo GetTitle("admin", "login"); ?></title>
+        <title>Login</title>
     </head>
     <body>
         <form id="loginForm"> <!-- FORM -->

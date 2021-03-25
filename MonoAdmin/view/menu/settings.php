@@ -13,8 +13,8 @@
             <div v-for="(value, name) in category['settings']" class="block_content">
                 <!-- Input variant -->
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGrid" v-model.lazy="categories[index]['settings'][name]">
-                    <label for="floatingInputGrid">{{ name }}</label>
+                    <input type="text" class="form-control" id="floatingInputGrid" v-model.lazy="categories[index]['settings'][name]['value']">
+                    <label for="floatingInputGrid">{{ value.title }}</label>
                 </div>
             </div>
         </div>

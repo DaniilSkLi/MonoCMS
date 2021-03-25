@@ -8,11 +8,15 @@
 }
 .setting_block {
     width: 100%;
-    padding: 20px;
+    padding: 10px 0px;
+}
+.setting_block > * {
+    margin: 10px 20px;
 }
 .setting_block hr {
     border: none;
-    background-color: #e8e8e8;
+    margin: 0;
+    background-color: #cecece;
 }
 .setting_block .block_title {
     line-height: 30px;

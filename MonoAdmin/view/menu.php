@@ -1,10 +1,7 @@
 <?php
 
-if (!$index)
-{
-    MONO_Redirect("../index.php");
-    exit();
-}
+require_once dirname(__DIR__) . "/check.php";
+Check();
 
 if (!isset($_GET["page"])) {
     $page = "dashboard";
@@ -16,12 +13,16 @@ else {
 // Functions
 
 // ПРоверка на существование значения в titles.ini для перевода.
+$titles = new MONO_Languages(LANG_PATH, "titles");
 function TitleCheck($name, $file_name) {
-    $title = GetTitle("admin", $file_name);
+    global $titles;
 
-    if ($title != NULL) {
+    $title = $titles->translate($file_name);
+
+    if ($title != $file_name) {
         $name = $title;
     }
+
     return $name;
 }
 
@@ -59,7 +60,8 @@ function ThePageTitle() {
             GetURI() . "view/CSS/menu/".$page.".css"
         ]); ?>
 
-        <title><?php ThePageTitle(); ?></title>
+        <!-- <title><?php ThePageTitle(); ?></title> -->
+        <title><?php MONO_Config::UnSet("test1") ?></title>
     </head>
     <body>
     <!-- Меню -->

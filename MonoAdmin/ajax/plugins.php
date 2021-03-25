@@ -23,9 +23,8 @@ Check(function() {
             else {
                 unset($active[$in_arr]);
             }
-    
-            $sql = "UPDATE `$table` SET `value`='".json_encode($active)."' WHERE `name`='active_plugins'";
-            $MONO_CONNECT->query($sql);
+            
+            MONO_Config::Set("active_plugins", json_encode($active));
         }
         else {
             return 403;

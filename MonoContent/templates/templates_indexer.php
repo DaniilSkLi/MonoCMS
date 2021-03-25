@@ -50,22 +50,18 @@ function GetTemplates() {
 
 function GetActiveThemePath() {
     global $MONO_CONNECT, $MONO_HOST;
-    $table = $MONO_HOST["table_prefix"]."settings";
-    $sql = "SELECT * FROM `$table` WHERE `name` = 'active_theme'";
     
-    $result = $MONO_CONNECT->query($sql);
-    $result = $result->fetch();
+    $result = MONO_Config::Get("active_theme");
     
-    if (!is_array($result)) {
+    if ($result == NULL) {
         $templates = GetTemplatesDir();
         $theme = __DIR__ . "/" . $templates[0] . "/";
         $theme = str_replace("\\", "/", $theme);
-        
-        $sql = "INSERT INTO `$table` (`name`, `value`) VALUES ('active_theme', '$theme')";
-        $MONO_CONNECT->query($sql);
+
+        MONO_Config::Set("active_theme", $theme);
         GetActiveThemePath();
     }
     else { 
-        return $result["value"];
+        return $result;
     }
 }

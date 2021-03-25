@@ -8,6 +8,7 @@ class MONO_AutorizationControl {
         // $sql = "INSERT INTO `" . $ini["table_prefix"] . "users`(`login`, `password`) VALUES('$login', '$password')";
         // $MONO_CONNECT->query($sql);
     }
+
     public static function SignIn($login, $password) {
         global $MONO_CONNECT, $MONO_HOST;
         if (!MONO_AutorizationControl::Check())
@@ -32,6 +33,7 @@ class MONO_AutorizationControl {
         }
         return true;
     }
+
     public static function Check() {
         global $MONO_CONNECT, $MONO_HOST;
         
@@ -49,5 +51,22 @@ class MONO_AutorizationControl {
         }
 
         return false;
+    }
+
+    public static function GetUserLanguage() {
+        global $MONO_CONNECT, $MONO_HOST;
+
+        if (isset($_SESSION["user_id"])) {
+            $ip = $_SERVER["REMOTE_ADDR"];
+
+            $sql = "SELECT `language` FROM `". $MONO_HOST["table_prefix"] ."users` WHERE `id`='" . $_SESSION["user_id"] . "'";
+            $result = $MONO_CONNECT->query($sql);
+
+            $user = $result->fetch();
+
+            if (isset($user["language"])) {
+                return $user["language"];
+            }
+        }
     }
 }

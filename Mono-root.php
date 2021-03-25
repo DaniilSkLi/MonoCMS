@@ -34,3 +34,8 @@ function GetURI() {
 	}
 	return $URI;
 }
+
+// Languaes path
+if ( ! defined( 'LANG_PATH' ) ) {
+	define( 'LANG_PATH', ROOT_PATH . 'MonoComponents/MonoData/languages/' );
+}
