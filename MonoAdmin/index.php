@@ -1,5 +1,9 @@
 <?php
 
+if (file_exists(ROOT_PATH . "MonoInstall")) {
+    rmdir(ROOT_PATH . "MonoInstall");
+}
+
 $index = true;
 
 require_once dirname(__DIR__) . "/Mono-root.php";
