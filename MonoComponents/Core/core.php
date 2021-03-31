@@ -8,6 +8,9 @@ require_once __DIR__ . "/getIni.php";
 // PDO
 require_once __DIR__ . "/connect.php";
 
+// Config
+require_once __DIR__ . "/data_base.php";
+
 // Auth
 require_once __DIR__ . "/autorization.php";
 

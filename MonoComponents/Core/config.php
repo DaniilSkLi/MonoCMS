@@ -25,6 +25,7 @@ class MONO_Config {
     }
 
     public static function Get($name) {
+
         $result = self::GetPDO_Object($name);
         $result = $result->fetch();
         
