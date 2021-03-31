@@ -26,7 +26,7 @@ function GetTemplates() {
     foreach ($dirs as $item) {
         $item_dir = scandir($dir . "/" . $item);
         if (in_array("info.ini", $item_dir) && in_array("index.php", $item_dir)) {
-            $ini = MONO_GetIni($dir . "/" . $item . "/info.ini");
+            $ini = MONO_ini::Get($dir . "/" . $item . "/info.ini");
             
             $theme = array(
                 "ThemeName" => MONO_isset($ini["ThemeName"]),

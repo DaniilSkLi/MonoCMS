@@ -2,8 +2,8 @@
 
 require_once __DIR__ . "/debug.php";
 
-// Get ini
-require_once __DIR__ . "/getIni.php";
+// ini
+require_once __DIR__ . "/ini.php";
 
 // PDO
 require_once __DIR__ . "/connect.php";

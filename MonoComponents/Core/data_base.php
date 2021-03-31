@@ -13,16 +13,16 @@ class MONO_DB {
             if ($columns == "")
                 $columns .= $column;
             else
-                $columns .= ", '" . $column;
+                $columns .= "`, `" . $column;
 
             if ($values == "")
                 $values .= $value;
             else
-                $values .= ", '" . $value;
+                $values .= "', '" . $value;
             
         }
 
-        $sql = "INSERT INTO ('$columns') VALUES ('$values')";
+        $sql = "INSERT INTO `$table`(`$columns`) VALUES ('$values')";
 
         $result = self::Query($sql);
 
@@ -54,13 +54,14 @@ class MONO_DB {
     }
 
     public static function CreateTable($name, $data) {
+        self::TableName($name);
         $columns = "";
 
         for ($key = 0; $key < count($data); $key++) {
             $columns .= ", " . $data[$key];
         }
 
-        $sql = "CREATE TABLE `$name` (`id` int NOT NULL PRIMARY KEY $columns);";
+        $sql = "CREATE TABLE `$name` (`id` int PRIMARY KEY AUTO_INCREMENT $columns);";
 
         $result = self::Query($sql);
 
@@ -70,10 +71,26 @@ class MONO_DB {
 
     }
 
+    public static function Exists($table, $where) {
+        self::TableName($table);
+
+        $sql = "SELECT * FROM `$table` WHERE $where";
+
+        $result = self::Query($sql);
+
+        if ($result->rowCount() === 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public static function Query($sql) {
         global $MONO_CONNECT;
 
-        return $MONO_CONNECT->query($sql);
+        $result = $MONO_CONNECT->query($sql);
+        return $result;
     }
 
     public static function TableName(&$table) {

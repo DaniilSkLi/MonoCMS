@@ -1,7 +1,10 @@
 <?php
 session_start();
 class MONO_AutorizationControl {
-    public static function SignUp($login, $password, $rights) {
+    public static function SignUp($login, $password) {
+        if (!MONO_DB::Exists( "users", "`login`='$login'" )) {
+            MONO_DB::Insert( "users", array( "login"=>$login, "password"=>$password ) );
+        }
         // CODE TO ADD ADMIN TO MYSQL
         // global $MONO_CONNECT;
         // $ini = MONO_GetIniArray(__DIR__ . "/Data/autorization.ini");
@@ -42,7 +45,7 @@ class MONO_AutorizationControl {
 
             $sql = "SELECT `ip` FROM `". $MONO_HOST["table_prefix"] ."users` WHERE `id`='" . $_SESSION["user_id"] . "'";
             $result = $MONO_CONNECT->query($sql);
-
+            
             $user = $result->fetch();
 
             if ($user["ip"] == $ip) {

@@ -52,7 +52,7 @@ function ThePageTitle() {
         <?php require_once __DIR__ . "/loading.php"; ?>
 
         <!-- Подключение шапки (все нужные билиотеки и прочее) -->
-        <?php GetHead(); ?>
+        <?php GetHead("Admin"); ?>
         <!-- Подключение css -->
         <?php MONO_include_css_array([
             GetURI() . "view/CSS/menu.css",

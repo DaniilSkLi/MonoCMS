@@ -22,7 +22,6 @@ let plugins = new Vue({
             });
         },
         addPlugin: function() {
-            console.log("asd");
             alert("Unpack your plugin and put plugin folder to \"SiteName/MonoContent/plugins/[put here]\"");
         }
     }

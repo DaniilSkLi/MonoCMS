@@ -26,7 +26,7 @@ function GetPlugins() {
     foreach ($dirs as $item) {
         $item_dir = scandir($dir . "/" . $item);
         if (in_array("info.ini", $item_dir) && in_array("index.php", $item_dir)) {
-            $ini = MONO_GetIni($dir . "/" . $item . "/info.ini");
+            $ini = MONO_ini::Get($dir . "/" . $item . "/info.ini");
             
             $plugin = array(
                 "PluginName" => MONO_isset($ini["PluginName"]),
@@ -38,6 +38,7 @@ function GetPlugins() {
             );
 
             $active = GetActivePlugin();
+            
             if (in_array($plugin["PluginPath"], $active)) {
                 $plugin["PluginActive"] = true;
             }
@@ -56,7 +57,7 @@ function GetActivePlugin() {
 
     if ($result == NULL) {
         MONO_Config::Set("active_plugins", json_encode(array()));
-        GetActivePlugin();
+        return array();
     }
     else {
         return json_decode($result, true);

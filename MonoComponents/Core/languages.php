@@ -21,7 +21,7 @@ class MONO_Languages {
         $this->language = $language;
         $this->languagePackPath = $languagePackPath;
         
-        $this->config = MONO_GetIni(__DIR__ . "/Data/languages.ini");
+        $this->config = MONO_ini::Get(__DIR__ . "/Data/languages.ini");
         $this->defaultLanguage = MONO_isset($this->config["defaultLanguage"]);
 
         $this->ini = $this->getLanguageIni($this->language);
@@ -46,6 +46,6 @@ class MONO_Languages {
     }
 
     private function getLanguageIni($language) {
-        return MONO_GetIni($this->languagePackPath . $language . "/" . $this->page . ".ini");
+        return MONO_ini::Get($this->languagePackPath . $language . "/" . $this->page . ".ini");
     }
 }
