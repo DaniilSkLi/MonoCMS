@@ -26,10 +26,11 @@ var install = new Vue({
         nextPage: function() {
             axios.post("MonoInstall/ajax/page" + this.page + ".php", this["page" + this.page])
             .then((response) => {
+                this.error = "";
                 if (response.data == true)
                     this.page++;
                 else if (response.data == "END")
-                    window.location.href = "MonoAdmin";
+                    this.page = "end";
                 else
                     this.error = "Failed to connect";
                 
@@ -39,13 +40,16 @@ var install = new Vue({
         backPage: function() {
             this.page--;
             window.history.pushState('1', 'Title', '?page=' + this.page);
+        },
+        toAdminPanel: function() {
+            window.location.href = "MonoAdmin";
         }
     }
 });
 
 window.onload = function() {
     let params = (new URL(document.location)).searchParams;
-    if (params > 1) {
+    if (params.has("page")) {
         install.page = params.get("page");
     }
 }

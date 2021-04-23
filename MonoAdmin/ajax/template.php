@@ -2,11 +2,9 @@
 
 require_once "lib/check.php";
 require_once "lib/getAxiosData.php";
-require_once ROOT_PATH . "MonoContent/Templates/templates_indexer.php";
+require_once ROOT_PATH . "MonoContent/templates/templates_indexer.php";
 
 Check(function(){
-    global $MONO_CONNECT, $MONO_HOST;
-
     $cmd = $_POST["command"];
 
     if ($cmd == "toggle") {

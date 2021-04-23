@@ -2,7 +2,7 @@
 
 require_once "lib/check.php";
 require_once "lib/getAxiosData.php";
-require_once ROOT_PATH . "MonoContent/Plugins/plugins_indexer.php";
+require_once ROOT_PATH . "MonoContent/plugins/plugins_indexer.php";
 
 Check(function() {
     global $MONO_CONNECT, $MONO_HOST;

@@ -1,7 +1,3 @@
-<?php
-    require_once ROOT_PATH . "MonoContent/plugins/plugins_indexer.php";
-?>
-
 <div class="page" id="vue">
     <!-- Заголовок -->
     <div class="page_title page_block_radius page_block_shadow"><?php ThePageTitle(); ?></div>

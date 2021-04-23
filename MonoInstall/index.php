@@ -65,7 +65,7 @@ require_once ROOT_PATH . "MonoComponents/GetHead.php";
                     </div>
                 </div>
 
-                <div class='columns mb-0'>
+                <div class='columns mb-0 is-mobile'>
                     <next-btn></next-btn>
                 </div>
             </form>
@@ -102,11 +102,38 @@ require_once ROOT_PATH . "MonoComponents/GetHead.php";
                     </div>
                 </div>
 
-                <div class='columns mb-0'>
+                <div class='columns mb-0 is-mobile'>
                     <back-btn></back-btn>
                     <next-btn></next-btn>
                 </div>
             </form>
+
+            <div id="page_end" v-if="page == 'end'" class='mt-5'>
+                <h1 class='title is-1 mb-2'>Step {{ page }}</h1>
+                <h5 class='is-size-5 mb-1'>Installation complete!</h5>
+                <h6 class='is-size-6 has-text-danger'>{{ error }}</h6>
+
+                <div class='columns mb-0 mt-0'>
+                    <div class='column is-half-desktop is-half-tablet is-full-mobile'>
+                        <article class="message is-warning">
+                            <div class="message-header">
+                                <p>Warning</p>
+                            </div>
+                            <div class="message-body">
+                                Please delete the "MonoInstall" folder for security reasons. Without deleting it, the site will not work.
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class='columns mb-0 is-mobile'>
+                    <div class="column">
+                        <div class='buttons'>
+                            <button v-on:click="toAdminPanel" class='button is-success'>To admin panel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
     <?php MONO_include_js(ROOT_URI . "MonoInstall/JS/index.js"); ?>

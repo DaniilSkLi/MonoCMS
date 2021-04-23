@@ -62,8 +62,10 @@ class MONO_DB {
         }
 
         $sql = "CREATE TABLE `$name` (`id` int PRIMARY KEY AUTO_INCREMENT $columns);";
-
-        $result = self::Query($sql);
+        
+        if (!self::ExistsTable($name)) {
+            $result = self::Query($sql);
+        }
 
         if ($result == false) {
             return "Error, the table already exists, or the parameters are incorrect.";
@@ -83,6 +85,19 @@ class MONO_DB {
         }
         else {
             return true;
+        }
+    }
+
+    public static function ExistsTable($table) {
+        global $MONO_CONNECT;
+
+        $sql = "SELECT 1 FROM `$table`";
+        try {
+            self::Query($sql);
+            return true;
+        }
+        catch (PDOException $e) {
+            return false;
         }
     }
 
