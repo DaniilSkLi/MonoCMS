@@ -1,4 +1,4 @@
 # MonoCMS
 My exprerimental project.
 
-There will be possibly non-working versions in the "Develop" branch, this version is highly undesirable for any use (it is intended for developers). If you want to use "MonoCMS" - use the "Release" branch, or at least the "Beta" branch. The "Alpha" branch is also not desirable for use, it is intended for those who want to try the latest version.
+I am currently working on a new core and visual design. In the new kernel, I will improve the old features, merge some, and throw some overboard. I have already greatly improved the work with the database. Soon I will be able to provide a fairly working CMS and will use it myself in projects. So far I am using only the old kernel, because many things become much easier, and when I finish the new kernel, it will be even easier.
